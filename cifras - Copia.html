@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin:0; font-size: 100%;
+        }
+
+        body{
+            background-color: blanchedalmond;
+            color:darkgrey;
+            margin-top:7%;
+            /*overflow: hidden;*/
+        }
+
+        h1{
+            font-size:100%;
+            padding-bottom: 5%;
+            color: cadetblue;
+            text-align: center;
+        }
+
+        #nota{
+            font-size: 1000%;
+            margin-left: 45%;
+        }
+
+        .resp{
+            margin-left: 10%;
+            height:30%;
+        }
+
+        .resp>*{
+            width:90%;
+            height:50px;
+            border: dodgerblue 1px solid;
+            border-radius: 7px;
+            margin-top:1%;
+            font-size: 180%;
+        }
+
+        .resp>input[type='button']{
+            background-color: white;
+            width: 91%;
+            color: rgb(82, 81, 81);
+        }
+
+        .resp>input[type='text']{
+            text-align: center;
+            margin-bottom: 5%;
+        }
+    </style>
+</head>
+<body>
+    <p>
+    <h1>Qual a nota?</h1>
+    <label id='nota'></label>
+    </p>
+    <p class='resp'>
+    <input type="text" name="" id="resposta">
+    <input type="button" value="Responder" id='responder'>
+    <input type="button" value="Responder Nova" id='novo'>
+    </p>
+
+    <script>
+        const nota   = document.getElementById('nota');
+        const resp   = document.getElementById('resposta');
+        const respdr = document.getElementById('responder');
+        const novo   = document.getElementById('novo');
+        const notas = ['A','B','C','D','E','F','G']
+
+        
+        novo.addEventListener('click',()=>{
+            let atual = nota.innerText;
+            nota.innerText = ale();
+            function verifica(){
+                if(nota.innerText == atual){
+                    ale();
+                    verifica();
+                }
+            }
+            resp.value = ""
+        });
+
+        respdr.addEventListener('click',()=>{
+            let a = (resp.value).toLowerCase();
+            let b = false;
+            
+            notasM = ['lá','la','sí','si','dó','do','ré','re','mí','mi','fá','fa','sól','sol']
+
+            if(a==''){alert("Campo Obrigatória em branco")}
+            else{
+                for(i of notasM){(a==i)?b=true:null}
+                    
+                function f(){alert('Tente de novo'); resp.value=''} 
+
+                if(b){
+                    switch(a){
+                        case('lá'):(nota.innerText=='A')?alert('parabéns!'):f();break;
+                        case('la'):(nota.innerText=='A')?alert('parabéns!'):f();break;
+                        case('sí'):(nota.innerText=='B')?alert('parabéns!'):f();break;
+                        case('si'):(nota.innerText=='B')?alert('parabéns!'):f();break;
+                        case('dó'):(nota.innerText=='C')?alert('parabéns!'):f();break;
+                        case('do'):(nota.innerText=='C')?alert('parabéns!'):f();break;
+                        case('ré'):(nota.innerText=='D')?alert('parabéns!'):f();break;
+                        case('re'):(nota.innerText=='D')?alert('parabéns!'):f();break;
+                        case('mí'):(nota.innerText=='E')?alert('parabéns!'):f();break;
+                        case('mi'):(nota.innerText=='E')?alert('parabéns!'):f();break;
+                        case('fá'):(nota.innerText=='F')?alert('parabéns!'):f();break;
+                        case('fa'):(nota.innerText=='F')?alert('parabéns!'):f();break;
+                        case('sól'):(nota.innerText=='G')?alert('parabéns!'):f();break;
+                        case('sol'):(nota.innerText=='G')?alert('parabéns!'):f();break;
+                    }
+                }
+                else{
+                    alert("Informe uma nota músical")
+                    notas.value=''
+                }
+            }
+        });
+
+        function ale(){
+            return notas[Math.floor(Math.random()*6)];
+        }
+
+        function verificaResp(nts,rsp){
+            
+        }
+
+        try{
+            document.onload(nota.innerText=ale())
+        }catch(e){}
+
+    </script>
+</body>
+</html>
